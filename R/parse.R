@@ -1,5 +1,4 @@
 #' @importFrom purrr map map_dfr pluck
-#' @importFrom tibble tibble
 #' @importFrom dplyr filter mutate
 get_main_parser_lst <-function(type){
   # prepare extractors
@@ -84,7 +83,6 @@ parse_list <- function(type, res_lst, offset, hit_count) {
 }
 
 #' @importFrom purrr map map_dfr pluck
-#' @importFrom tibble tibble
 #' @importFrom dplyr filter mutate
 get_includes_parser_df <- function(res, includes) {
   df <- tibble::tibble(
@@ -127,7 +125,6 @@ get_includes_parser_df <- function(res, includes) {
 }
 
 #' @importFrom purrr map map_dfr pluck
-#' @importFrom tibble tibble
 #' @importFrom rlang UQ
 parse_includes <- function(nm, lst_xtr, lst) {
   res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, i, .default = NA))))

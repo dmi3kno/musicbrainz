@@ -24,6 +24,7 @@ Imports:
     tidyr,
     dplyr,
     purrr,
+    tibble,
     ratelimitr,
     memoise
 RoxygenNote: 6.0.1

@@ -94,7 +94,6 @@ search_artists <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 #' search_events("The+Prince\'s+Trust")
 #'
 #' @importFrom purrr pluck map map_chr
-#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -265,7 +264,6 @@ search_recordings <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 #' search_release_groups("The+Wall")
 #'
 #' @importFrom purrr pluck map map_dfr pmap_dfc
-#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -302,7 +300,6 @@ search_release_groups <- function(query, limit=NULL, offset=NULL, strict=FALSE) 
 #' search_releases("The+Wall")
 #'
 #' @importFrom purrr pluck map map_dfr pmap_dfc
-#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -336,7 +333,6 @@ search_releases <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 #' search_series("The+Best")
 #'
 #' @importFrom purrr pluck map map_dfr pmap_dfc
-#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -365,7 +361,6 @@ search_series <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 #' search_works("The+Wall")
 #'
 #' @importFrom purrr pluck map map_dfr pmap_dfc
-#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
