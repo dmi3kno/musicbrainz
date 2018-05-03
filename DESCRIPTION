@@ -1,0 +1,33 @@
+Package: musicbrainz
+Type: Package
+Title: Bindings for the 'musicbrainz' Database API
+Version: 0.0.0.9000
+Authors@R: c(person("Dmytro", "Perepolkin"
+             , email = "dperepolkin@gmail.com"
+             , role = c("aut", "cre"))
+             , person("MetaBrainz Foundation", role = c("aut"), comment="MetaBrainz"))
+Description: Utilising the 'MusicBrainz Database' API (see <https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2>
+    for more information), retrieve information about artists, release groups, releases, recordings, works, and labels, 
+    as well as the many relationships between them.
+Depends:
+    R (>= 3.2.3)
+License: MIT + file LICENSE
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+Imports: 
+    httr,
+    readr,
+    rlang,
+    tidyr,
+    dplyr,
+    purrr,
+    ratelimitr,
+    memoise
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
+URL: https://github.com/dmi3kno/musicbrainz,
+BugReports: https://github.com/dmi3kno/musicbrainz/issues
+Encoding: UTF-8

@@ -1,0 +1,72 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/musicbrainz)](http://cran.r-project.org/package=musicbrainz)
+
+
+# musicbrainz
+
+The goal of musicbrainz is to make it easy to call the MusicBrainz Database API from R.
+
+## Installation
+
+You can install musicbrainz from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("dmi3kno/musicbrainz")
+```
+
+## Example
+
+There are three families of functions in `musicbrainz` package: search, lookup and browse.
+
+### Search
+
+Lets search information about Miles Davis
+
+```{r miles}
+library(musicbrainz)
+library(dplyr)
+
+miles_df <- search_artists("Miles Davis")
+miles_df
+```
+
+It looks like the first hit is what we need. We can use `dplyr` to extract the information of interest
+
+```{r id}
+miles_id <- miles_df %>% 
+  select(mbid) %>%
+  slice(1) %>% 
+  pull()
+```
+
+### Lookup
+
+Now that we have MusicBrainz id ("mbid") we can call the lookup function.
+
+```{r lookup}
+miles_lookup <- lookup_artist_by_id("561d854a-6a28-4aa7-8c99-323e6ce46c2a")
+miles_lookup
+```
+
+### Browse
+
+We can also browse linked records (such as all releases by Miles Davis).
+
+```{r browse}
+miles_releases <- browse_releases_by("artist", "561d854a-6a28-4aa7-8c99-323e6ce46c2a")
+miles_releases
+```
