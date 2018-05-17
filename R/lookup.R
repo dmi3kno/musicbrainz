@@ -1,6 +1,14 @@
-# Sys.setenv("HTTP_PROXY"="")
-# Sys.setenv("HTTPS_PROXY"="")
+#'
+#'
+#' @param mbid
+#' @param includes
+#' @name lookup
+#' @rdname lookup
+NULL
 
+#' @describeIn lookup Lookup area by musicbrainz id
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck
 #' @export
 lookup_area_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()
@@ -14,7 +22,9 @@ lookup_area_by_id <- function(mbid, includes=NULL) {
   res_df
 }
 
-#lookup_area_by_id(search_areas("Trondheim",1)$mbid)
+#' @describeIn lookup Lookup area by musicbrainz id
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_artist_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("recordings", "releases", "release-groups", "works")
@@ -31,8 +41,13 @@ lookup_artist_by_id <- function(mbid, includes=NULL) {
   res_df
 }
 
-#lookup_artist_by_id(search_artists("David+Sanborn",1)$mbid, includes=c("recordings"))
-# mbid="79247575-5787-48c6-a32f-1b80d6602681"
+#'
+#'
+#' @param mbid
+#' @param includes
+#'
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_event_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()
@@ -48,6 +63,8 @@ lookup_event_by_id <- function(mbid, includes=NULL) {
 }
 
 #lookup_event_by_id(search_events("The+Prince",1)$mbid)
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_instrument_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()
@@ -63,7 +80,8 @@ lookup_instrument_by_id <- function(mbid, includes=NULL) {
 }
 
 #lookup_instrument_by_id(search_instruments("bandura")$mbid[1])
-
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_label_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("releases")
@@ -81,6 +99,8 @@ lookup_label_by_id <- function(mbid, includes=NULL) {
 }
 
 #lookup_label_by_id(search_labels("Blue+Note",1)$mbid, includes = "releases")
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_place_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()
@@ -96,6 +116,8 @@ lookup_place_by_id <- function(mbid, includes=NULL) {
 }
 
 #lookup_place_by_id(search_places("Telenor+Arena",1)$mbid)
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_recording_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("artists", "releases")
@@ -112,6 +134,8 @@ lookup_recording_by_id <- function(mbid, includes=NULL) {
   res_df
 }
 #lookup_recording_by_id(search_recordings("All+for+love",1)$mbid, includes = "artists")
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_release_group_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("artists", "releases")
@@ -129,7 +153,8 @@ lookup_release_group_by_id <- function(mbid, includes=NULL) {
 }
 
 #lookup_release_group_by_id(search_release_groups("The+Best", 1)$mbid, includes = "releases")
-
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_release_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("artists", "labels", "recordings", "release-groups")
@@ -147,7 +172,8 @@ lookup_release_by_id <- function(mbid, includes=NULL) {
 }
 #mbid=search_releases("The+Best",1)$mbid
 #lookup_release_by_id(search_releases("The+Best",1)$mbid, includes = "release-groups")
-
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_series_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()
@@ -162,6 +188,8 @@ lookup_series_by_id <- function(mbid, includes=NULL) {
   res_df
 }
 
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map_dfr pluck pmap_dfc
 #' @export
 lookup_work_by_id <- function(mbid, includes=NULL) {
   available_includes <- c()

@@ -1,3 +1,4 @@
+#' @importFrom httr GET add_headers
 httr_get <- function(url) {
   httr::GET(
     url,
@@ -8,14 +9,16 @@ httr_get <- function(url) {
   )
 }
 
-# rate limiting function
+#' @importFrom ratelimitr rate limit_rate
 httr_get_rate_ltd <- ratelimitr::limit_rate(
   httr_get,
   ratelimitr::rate(n = 1, period = 1.6)
 )
 
-# error handling function
+#' @importFrom httr status_code content
 get_data_with_errors <- function(url, verbose) {
+  # error handling function
+
   # api call
   mb_data <- httr_get_rate_ltd(url)
 
@@ -29,9 +32,7 @@ get_data_with_errors <- function(url, verbose) {
     }
     res <- NULL
   }
-
   if (status == 200) res <- httr::content(mb_data, type = "application/json")
-
   res
 }
 
@@ -49,18 +50,20 @@ get_data_with_errors <- function(url, verbose) {
         message("This is the last attempt, if it fails will return NULL") # nolint
       }
     }
-
     Sys.sleep(2^try_number)
     output <- get_data_with_errors(url, verbose)
   }
   output
 }
 
-# memoised function
+#' @importFrom memoise memoise
 get_data <- memoise::memoise(.GET_data)
 
+#' @importFrom httr build_url parse_url
+#' @importFrom utils URLencode
 lookup_by_id <- function(resource, mbid, includes) {
   # lookup:   /<ENTITY>/<MBID>?inc=<INC>
+  # API request function for lookup
   base_url <- "http://musicbrainz.org/ws/2"
   url <- base::paste(c(base_url, resource, mbid), collapse = "/")
   url <- utils::URLencode(url)
@@ -74,7 +77,9 @@ lookup_by_id <- function(resource, mbid, includes) {
   get_data(url)
 }
 
+#' @importFrom httr build_url
 search_by_query <- function(type, query, limit, offset) {
+  # API request function for search
   # search:   /<ENTITY>?query=<QUERY>&limit=<LIMIT>&offset=<OFFSET>
   base_url <- "http://musicbrainz.org/ws/2"
   url <- base::paste(c(base_url, type), collapse = "/")
@@ -87,14 +92,18 @@ search_by_query <- function(type, query, limit, offset) {
   get_data(url)
 }
 
+
+#' @importFrom httr build_url
 #' @importFrom stats setNames
+#' @importFrom utils URLencode
 browse_by_lnkd_id <- function(resource, lnk_resource, mbid, includes, limit, offset) {
+  # API request function for search
   # browse:   /<ENTITY>?<ENTITY>=<MBID>&limit=<LIMIT>&offset=<OFFSET>&inc=<INC>
   base_url <- "http://musicbrainz.org/ws/2"
   url <- base::paste(c(base_url, resource), collapse = "/")
   url <- utils::URLencode(url)
   parsed_url <- httr::parse_url(url)
-  parsed_url$query <- setNames(base::list(mbid), nm = lnk_resource)
+  parsed_url$query <- stats::setNames(base::list(mbid), nm = lnk_resource)
   parsed_url$query <- base::append(parsed_url$query, list(limit = limit, offset = offset))
 
   if (!is.null(includes) && length(includes)) {

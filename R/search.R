@@ -1,15 +1,32 @@
-#' Search annotations
+#' Search musicbrainz database
 #'
-#' @param query search string using Lucene syntax
+#' Perform free text search in the musicbrainz database. Scope of each of the `search` functions is limited to specific type of entity. Search string can be composed using Apache Lucene search syntax, including specifying relations between entities explicitly.
+#'
+#' @param query search string.
 #'
 #' @param limit limit number of hits returned from database, defaults to NULL
 #' @param offset number of hits to skip, defaults to NULL
 #' @param strict return only exact matches with score of 100, defaults to FALSE
 #'
-#' @return a tibble of annotations
+#' @return a tibble of entities of interest
 #' @examples
 #' search_annotations("concerto")
 #'
+#' # return only first entry
+#' search_areas("Oslo",limit=1)
+#'
+#' # skip first 25 entries (can be used as a follow-up query)
+#' search_artists("George Michael", offset=25)
+#'
+#' # return only events precisely matching given name
+#' search_events("The Prince\'s Trust", strict=TRUE)
+#'
+#' @references \url{https://lucene.apache.org/core/4_3_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}
+#' @name search
+#' @rdname search
+NULL
+
+#' @describeIn search Search annotations
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -26,18 +43,7 @@ search_annotations <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search areas
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of areas
-#' @examples
-#' search_areas("Oslo")
-#'
+#' @describeIn search Search areas
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -54,18 +60,7 @@ search_areas <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search artists
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of artists
-#' @examples
-#' search_artists("John+Taylor")
-#'
+#' @describeIn search Search artists
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -81,19 +76,9 @@ search_artists <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search events
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of events
-#' @examples
-#' search_events("The+Prince\'s+Trust")
-#'
+#' @describeIn search Search events
 #' @importFrom purrr pluck map map_chr
+#' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -134,18 +119,7 @@ search_events <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 }
 
 
-#' Search instruments
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of instruments
-#' @examples
-#' search_instruments("French+Horn")
-#'
+#' @describeIn search Search instrument
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -162,18 +136,7 @@ search_instruments <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 }
 
 
-#' Search labels
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of labels
-#' @examples
-#' search_labels("Blue+Note")
-#'
+#' @describeIn search Search labels
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -189,18 +152,7 @@ search_labels <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search places
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of places
-#' @examples
-#' search_places("Telenor+Arena")
-#'
+#' @describeIn search Search places
 #' @importFrom purrr pluck
 #' @importFrom dplyr filter
 #' @export
@@ -218,18 +170,7 @@ search_places <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search recordings
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of recordings
-#' @examples
-#' search_recordings("Yellow+Submarine")
-#'
+#' @describeIn search Search recordings
 #' @importFrom purrr pluck map map_dfr pmap_dfc
 #' @importFrom dplyr filter bind_cols
 #' @export
@@ -251,18 +192,7 @@ search_recordings <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search release groups (albums etc)
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of release groups
-#' @examples
-#' search_release_groups("The+Wall")
-#'
+#' @describeIn search Search release groups (e.g. albums)
 #' @importFrom purrr pluck map map_dfr pmap_dfc
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
@@ -287,18 +217,7 @@ search_release_groups <- function(query, limit=NULL, offset=NULL, strict=FALSE) 
  res_df
 }
 
-#' Search releases
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of releases
-#' @examples
-#' search_releases("The+Wall")
-#'
+#' @describeIn search Search releases
 #' @importFrom purrr pluck map map_dfr pmap_dfc
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
@@ -320,18 +239,7 @@ search_releases <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search series
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of series
-#' @examples
-#' search_series("The+Best")
-#'
+#' @describeIn search Search series
 #' @importFrom purrr pluck map map_dfr pmap_dfc
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols
@@ -348,18 +256,7 @@ search_series <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   res_df
 }
 
-#' Search works
-#'
-#' @param query search string using Lucene syntax
-#'
-#' @param limit limit number of hits returned from database, defaults to NULL
-#' @param offset number of hits to skip, defaults to NULL
-#' @param strict return only exact matches with score of 100, defaults to FALSE
-#'
-#' @return a tibble of works
-#' @examples
-#' search_works("The+Wall")
-#'
+#' @describeIn search Search works
 #' @importFrom purrr pluck map map_dfr pmap_dfc
 #' @importFrom tidyr drop_na
 #' @importFrom dplyr filter bind_cols

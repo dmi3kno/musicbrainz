@@ -1,5 +1,5 @@
-#' @importFrom purrr map map_dfr pluck
-#' @importFrom dplyr filter mutate
+#' @importFrom tibble tribble
+#' @importFrom dplyr filter
 get_main_parser_lst <-function(type){
   # prepare extractors
   parsers_df <- tibble::tribble(
@@ -83,7 +83,8 @@ parse_list <- function(type, res_lst, offset, hit_count) {
 }
 
 #' @importFrom purrr map map_dfr pluck
-#' @importFrom dplyr filter mutate
+#' @importFrom tibble tibble
+#' @importFrom dplyr filter mutate select
 get_includes_parser_df <- function(res, includes) {
   df <- tibble::tibble(
     nm = c("releases", "recordings", "release-groups", "works", "artists", "labels", "media"),
@@ -125,6 +126,7 @@ get_includes_parser_df <- function(res, includes) {
 }
 
 #' @importFrom purrr map map_dfr pluck
+#' @importFrom tibble tibble
 #' @importFrom rlang UQ
 parse_includes <- function(nm, lst_xtr, lst) {
   res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, i, .default = NA))))
@@ -133,7 +135,7 @@ parse_includes <- function(nm, lst_xtr, lst) {
 
 
 validate_includes <- function(includes, available_includes){
-  unsupported_includes <- setdiff(includes, available_includes)
+  unsupported_includes <- base::setdiff(includes, available_includes)
   if(!is.null(unsupported_includes) && length(unsupported_includes)>0){
     if(length(available_includes)>0)
       message(paste("Only", paste0(paste0("'",available_includes,"'"), collapse = ", "),
@@ -143,5 +145,5 @@ validate_includes <- function(includes, available_includes){
 
     message(paste("Ignoring", paste0(paste0("'",unsupported_includes,"'"), collapse = ", ")))
   }
-  intersect(includes, available_includes)
+  base::intersect(includes, available_includes)
 }
