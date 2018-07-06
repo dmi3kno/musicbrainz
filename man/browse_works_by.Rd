@@ -12,7 +12,7 @@ browse_works_by(entity, mbid, includes = NULL, limit = NULL,
 
 \item{mbid}{id of an object, specified by entity}
 
-\item{includes}{No includes are allowed for this function}
+\item{includes}{tags}
 
 \item{limit}{restrict number of records retrieved from musicbrainz database}
 

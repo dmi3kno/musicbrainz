@@ -25,7 +25,7 @@ mb_browse <- function(context, entity, mbid, includes, limit, offset,
 #' @param entity area, recording, release, release-group or work
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes no includes are allowed for this function
+#' @param includes tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -52,7 +52,7 @@ browse_artists_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NU
 #' @param entity area, artist or place
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes no includes are allowed for this function
+#' @param includes tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -76,7 +76,7 @@ browse_events_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @param entity area or release
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes no includes are allowed for this function
+#' @param includes tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -99,7 +99,7 @@ browse_labels_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @param entity area
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes no includes are allowed for this function
+#' @param includes tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -122,7 +122,7 @@ browse_places_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @param entity artist, release
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes artists
+#' @param includes artists, tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -167,7 +167,7 @@ browse_releases_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=N
 #' @param entity artist, release
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes artists
+#' @param includes artists, tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'
@@ -189,7 +189,7 @@ browse_release_groups_by <- function(entity, mbid, includes=NULL, limit=NULL, of
 #' @param entity artist
 #'
 #' @param mbid id of an object, specified by entity
-#' @param includes No includes are allowed for this function
+#' @param includes tags
 #' @param limit restrict number of records retrieved from musicbrainz database
 #' @param offset number of records to skip
 #'

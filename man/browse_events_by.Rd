@@ -12,7 +12,7 @@ browse_events_by(entity, mbid, includes = NULL, limit = NULL,
 
 \item{mbid}{id of an object, specified by entity}
 
-\item{includes}{no includes are allowed for this function}
+\item{includes}{tags}
 
 \item{limit}{restrict number of records retrieved from musicbrainz database}
 

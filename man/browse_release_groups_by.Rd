@@ -12,7 +12,7 @@ browse_release_groups_by(entity, mbid, includes = NULL, limit = NULL,
 
 \item{mbid}{id of an object, specified by entity}
 
-\item{includes}{artists}
+\item{includes}{artists, tags}
 
 \item{limit}{restrict number of records retrieved from musicbrainz database}
 
