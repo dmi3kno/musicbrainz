@@ -86,8 +86,8 @@ parse_list <- function(type, res_lst, offset, hit_count) {
 #' @importFrom dplyr filter mutate
 get_includes_parser_df <- function(res, includes) {
   df <- tibble::tibble(
-    nm = c("releases", "recordings", "release-groups", "works", "artists", "labels", "media"),
-    node=c("releases", "recordings", "release-groups", "works", "artist-credit", "label-info", "media"),
+    nm = c("releases", "recordings", "release-groups", "works", "artists", "labels", "media", "tags"),
+    node=c("releases", "recordings", "release-groups", "works", "artist-credit", "label-info", "media", "tags"),
     lst_xtr = list(
       list(
         release_mbid = "id", barcode = "barcode", packaging = "packaging", packaging_id = "packaging-id",
@@ -116,7 +116,8 @@ get_includes_parser_df <- function(res, includes) {
         label_code = list("label", "label-code"), disambiguation = list("label", "disambiguation"),
         catalog_number = "catalog-number"
       ),
-      list(format = "format", disc_count = "disc-count", track_count = "track-count")
+      list(format = "format", disc_count = "disc-count", track_count = "track-count"),
+      list(tag_name = "name", tag_count = "count")
     )
   )
   df <- dplyr::filter(df, nm %in% includes)

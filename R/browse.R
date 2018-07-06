@@ -40,7 +40,7 @@ mb_browse <- function(context, entity, mbid, includes, limit, offset,
 #' @export
 browse_artists_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("area", "recording", "release", "release-group", "work")
-  available_includes <- c()
+  available_includes <- c("tags")
 
   mb_browse(context="artist", entity, mbid, includes, limit, offset,
                       allowed_entities, available_includes)
@@ -64,7 +64,7 @@ browse_artists_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NU
 #' @export
 browse_events_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("area", "artist", "place")
-  available_includes <- c()
+  available_includes <- c("tags")
 
   mb_browse(context="event", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
@@ -88,7 +88,7 @@ browse_events_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @export
 browse_labels_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("area", "release")
-  available_includes <- c()
+  available_includes <- c("tags")
   mb_browse(context="label", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
 }
@@ -111,7 +111,7 @@ browse_labels_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @export
 browse_places_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("area")
-  available_includes <- c()
+  available_includes <- c("tags")
   mb_browse(context="place", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
 }
@@ -134,7 +134,7 @@ browse_places_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NUL
 #' @export
 browse_recordings_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("artist", "release")
-  available_includes <- c("artists") #isrcs? not currently implemented
+  available_includes <- c("artists", "tags") #isrcs? not currently implemented
 
   mb_browse(context="recording", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
@@ -179,7 +179,7 @@ browse_releases_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=N
 #' @export
 browse_release_groups_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("artist", "release")
-  available_includes <- c("artists")
+  available_includes <- c("artists", "tags")
   mb_browse(context="release-group", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
 }
@@ -201,7 +201,7 @@ browse_release_groups_by <- function(entity, mbid, includes=NULL, limit=NULL, of
 #' @export
 browse_works_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
   allowed_entities <- c("artist")
-  available_includes <- c()
+  available_includes <- c("tags")
   mb_browse(context="work", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
 }
