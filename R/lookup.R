@@ -22,7 +22,6 @@
 #' lookup_artist_by_id(sanborn_id, includes=c("recordings"))
 NULL
 
-
 #' @describeIn lookup_entities_by_id lookup area by mbid.
 #' Available includes: tags
 #' @importFrom dplyr bind_cols
