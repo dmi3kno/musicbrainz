@@ -63,7 +63,7 @@ get_main_parser_lst <-function(type){
     "works",       list(mbid = "id", type = "type", score = "score", title = "title",
                         language = "language", disambiguation = "disambiguation")
   )
-  dplyr::filter(parsers_df, type == nm)[["lst_xtr"]][[1]] # or pull and flatten
+  dplyr::filter(parsers_df, .data$nm == type)[["lst_xtr"]][[1]] # or pull and flatten
 }
 
 
@@ -121,15 +121,16 @@ get_includes_parser_df <- function(res, includes) {
       list(tag_name = "name", tag_count = "count")
     )
   )
-  df <- dplyr::filter(df, nm %in% includes)
-  df <- dplyr::mutate(df, lst = purrr::map(node, ~ purrr::pluck(res, .x, .default = NULL)))
-  dplyr::select(df, -node)
+  df <- dplyr::filter(df, .data$nm %in% includes)
+  df <- dplyr::mutate(df, lst = purrr::map(.data$node, ~ purrr::pluck(res, .x, .default = NULL)))
+  dplyr::select(df, -.data$node)
 }
 
 #' @importFrom purrr map map_dfr pluck
 #' @importFrom tibble tibble
 #' @importFrom rlang UQ
 parse_includes <- function(nm, lst_xtr, lst) {
+  nm <- quo_name(nm)
   res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, i, .default = NA))))
   tibble::tibble(rlang::UQ(nm) := res_lst)
 }

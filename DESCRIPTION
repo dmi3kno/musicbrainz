@@ -19,8 +19,7 @@ Suggests:
     rmarkdown
 Imports: 
     httr,
-    readr,
-    rlang,
+    rlang (>= 0.1.2),
     tidyr,
     dplyr,
     purrr,

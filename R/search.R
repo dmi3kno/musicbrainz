@@ -39,7 +39,7 @@ search_annotations <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   # extract and bind together
   res_df <- parse_list("annotations", res_lst, res[["offset"]], res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -56,7 +56,7 @@ search_areas <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   # extract and bind together
   res_df <- parse_list("areas", res_lst, res[["offset"]], res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -72,7 +72,7 @@ search_artists <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 
   res_df <- parse_list("artists", res_lst, res[["offset"]], res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -114,7 +114,7 @@ search_events <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     )
   )
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -131,7 +131,7 @@ search_instruments <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 
   res_df <- parse_list("instruments", res_lst, res[["offset"]], res[["count"]])
 
- if (strict) res_df <- dplyr::filter(res_df, score==100)
+ if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
  res_df
 }
 
@@ -148,7 +148,7 @@ search_labels <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 
   res_df <- parse_list("labels", res_lst, res[["offset"]], res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -165,7 +165,7 @@ search_places <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
   # extract and bind
   res_df <- parse_list("places", res_lst, offset = res[["offset"]], hit_count = res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
 
   res_df
 }
@@ -188,7 +188,7 @@ search_recordings <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     purrr::map_dfr(parsers_lst, ~purrr::pmap_dfc(.x, parse_includes))
   )
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -213,7 +213,7 @@ search_release_groups <- function(query, limit=NULL, offset=NULL, strict=FALSE) 
     purrr::map_dfr(parsers_lst, ~purrr::pmap_dfc(.x, parse_includes))
   )
 
- if (strict) res_df <- dplyr::filter(res_df, score==100)
+ if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
  res_df
 }
 
@@ -235,7 +235,7 @@ search_releases <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     purrr::map_dfr(parsers_lst, ~purrr::pmap_dfc(.x, parse_includes))
   )
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -252,7 +252,7 @@ search_series <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
 
   res_df <- parse_list("labels", res_lst, res[["offset"]], res[["count"]])
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
 
@@ -290,6 +290,6 @@ search_works <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     )
   )
 
-  if (strict) res_df <- dplyr::filter(res_df, score==100)
+  if (strict) res_df <- dplyr::filter(res_df, .data$score==100)
   res_df
 }
