@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 # musicbrainz
 
-The goal of musicbrainz is to make it easy to call the MusicBrainz Database API from R.
+The goal of musicbrainz is to make it easy to call the MusicBrainz Database API from R. Currently API does NOT require authentication for reading the data, however, requests to the database are subject to a rate limit of 1 request/sec. The package utilizes `ratelimitr` to make sure you don't need to worry about exceeding that limit.  
 
 ## Installation
 
@@ -70,3 +70,8 @@ We can also browse linked records (such as all releases by Miles Davis).
 miles_releases <- browse_releases_by("artist", "561d854a-6a28-4aa7-8c99-323e6ce46c2a")
 miles_releases
 ```
+
+## References
+ 
+ 1. Details of the Musicbrainz database API: https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2
+ 2. Details about rate limits: https://musicbrainz.org/doc/XML_Web_Service/Rate_Limiting
