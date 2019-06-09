@@ -13,7 +13,7 @@ mb_browse <- function(context, entity, mbid, includes, limit, offset,
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    parse_list(paste0(context,"s"), res_lst, offset = res[[paste0(context,"-offset")]], hit_count = res[[paste0(context,"-count")]]),
+    parse_list(type=paste0(context,"s"), res_lst, offset = res[[paste0(context,"-offset")]], hit_count = res[[paste0(context,"-count")]]),
     purrr::map_dfr(parsers_lst, ~purrr::pmap_dfc(.x, parse_includes))
   )
   res_df

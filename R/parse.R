@@ -75,7 +75,7 @@ parse_list <- function(type, res_lst, offset, hit_count) {
 
   res_lst_xtr <- get_main_parser_lst(type)
 
-  res_df <- purrr::map_dfr(res_lst, ~ purrr::map(res_lst_xtr, function(i) purrr::pluck(.x, i, .default = NA)))
+  res_df <- purrr::map_dfr(res_lst, ~ purrr::map(res_lst_xtr, function(i) purrr::pluck(.x, !!!i, .default = NA)))
 
   res_df$score <- as.integer(res_df$score)
 
@@ -122,7 +122,7 @@ get_includes_parser_df <- function(res, includes) {
     )
   )
   df <- dplyr::filter(df, .data$nm %in% includes)
-  df <- dplyr::mutate(df, lst = purrr::map(.data$node, ~ purrr::pluck(res, .x, .default = NULL)))
+  df <- dplyr::mutate(df, lst = purrr::map(.data$node, ~purrr::pluck(res, .x, .default = NULL)))
   dplyr::select(df, -.data$node)
 }
 
@@ -131,7 +131,7 @@ get_includes_parser_df <- function(res, includes) {
 #' @importFrom rlang UQ
 parse_includes <- function(nm, lst_xtr, lst) {
   nm <- quo_name(nm)
-  res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, i, .default = NA))))
+  res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, !!!i, .default = NA))))
   tibble::tibble(rlang::UQ(nm) := res_lst)
 }
 

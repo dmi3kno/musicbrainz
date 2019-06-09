@@ -97,19 +97,19 @@ search_events <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     parse_list("events", res_lst, offset = res[["offset"]], hit_count = res[["count"]]),
     tibble::tibble(
       artists = purrr::map(relations_lst, ~ tidyr::drop_na(tibble::tibble(
-        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, list("type"), .default = NA_character_)),
-        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, list("direction"), .default = NA_character_)),
-        artist_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "id"), .default = NA_character_)),
-        artist_name = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "name"), .default = NA_character_)),
-        artist_sort_name = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "sort-name"), .default = NA_character_)),
-        artist_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "disambiguation"), .default = NA_character_)),
+        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("type"), .default = NA_character_)),
+        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("direction"), .default = NA_character_)),
+        artist_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "id"), .default = NA_character_)),
+        artist_name = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "name"), .default = NA_character_)),
+        artist_sort_name = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "sort-name"), .default = NA_character_)),
+        artist_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "disambiguation"), .default = NA_character_)),
       ), artist_mbid)),
       places = purrr::map(relations_lst, ~ tidyr::drop_na(tibble::tibble(
-        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, list("type"), .default = NA_character_)),
-        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, list("direction"), .default = NA_character_)),
-        place_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, list("place", "id"), .default = NA_character_)),
-        place_name = purrr::map_chr(.x, function(i) purrr::pluck(i, list("place", "name"), .default = NA_character_)),
-        place_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, list("place", "disambiguation"), .default = NA_character_))
+        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("type"), .default = NA_character_)),
+        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("direction"), .default = NA_character_)),
+        place_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("place", "id"), .default = NA_character_)),
+        place_name = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("place", "name"), .default = NA_character_)),
+        place_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("place", "disambiguation"), .default = NA_character_))
       ), place_mbid))
     )
   )
@@ -273,19 +273,19 @@ search_works <- function(query, limit=NULL, offset=NULL, strict=FALSE) {
     parse_list("works", res_lst, offset = res[["offset"]], hit_count = res[["count"]]),
     tibble::tibble(
       artists = purrr::map(relations_lst, ~ tidyr::drop_na(tibble::tibble(
-        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, list("type"), .default = NA_character_)),
-        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, list("direction"), .default = NA_character_)),
-        artist_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "id"), .default = NA_character_)),
-        artist_name = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "name"), .default = NA_character_)),
-        artist_sort_name = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "sort-name"), .default = NA_character_)),
-        artist_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, list("artist", "disambiguation"), .default = NA_character_)),
+        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("type"), .default = NA_character_)),
+        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("direction"), .default = NA_character_)),
+        artist_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "id"), .default = NA_character_)),
+        artist_name = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "name"), .default = NA_character_)),
+        artist_sort_name = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "sort-name"), .default = NA_character_)),
+        artist_disambiguation = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("artist", "disambiguation"), .default = NA_character_)),
       ), artist_mbid)),
       recordings = purrr::map(relations_lst, ~ tidyr::drop_na(tibble::tibble(
-        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, list("type"), .default = NA_character_)),
-        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, list("direction"), .default = NA_character_)),
-        recording_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, list("recording", "id"), .default = NA_character_)),
-        recording_title = purrr::map_chr(.x, function(i) purrr::pluck(i, list("recording", "title"), .default = NA_character_)),
-        recording_video = purrr::map_chr(.x, function(i) purrr::pluck(i, list("recording", "video"), .default = NA_character_))
+        relations_type = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("type"), .default = NA_character_)),
+        relations_direction = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("direction"), .default = NA_character_)),
+        recording_mbid = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("recording", "id"), .default = NA_character_)),
+        recording_title = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("recording", "title"), .default = NA_character_)),
+        recording_video = purrr::map_chr(.x, function(i) purrr::pluck(i, !!!list("recording", "video"), .default = NA_character_))
       ), recording_mbid))
     )
   )

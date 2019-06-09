@@ -36,7 +36,7 @@ lookup_area_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("areas"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("areas"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -56,7 +56,7 @@ lookup_artist_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("artists"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("artists"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -76,7 +76,7 @@ lookup_event_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("events"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("events"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
 
@@ -97,7 +97,7 @@ lookup_instrument_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("instruments"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("instruments"),function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
 
@@ -118,7 +118,7 @@ lookup_label_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("labels"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("labels"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -138,7 +138,7 @@ lookup_place_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("places"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("places"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
 
@@ -159,7 +159,7 @@ lookup_recording_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("recordings"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("recordings"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -179,7 +179,7 @@ lookup_release_group_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("release-groups"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("release-groups"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -199,7 +199,7 @@ lookup_release_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("releases"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("releases"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
   res_df
@@ -219,7 +219,7 @@ lookup_series_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("series"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("series"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
 
@@ -240,7 +240,7 @@ lookup_work_by_id <- function(mbid, includes=NULL) {
 
   # extract and bind
   res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("works"), ~ purrr::pluck(res, .x, .default = NA_character_)),
+    purrr::map_dfr(get_main_parser_lst("works"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
     purrr::pmap_dfc(parsers_df, parse_includes)
   )
 

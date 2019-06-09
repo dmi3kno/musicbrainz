@@ -16,7 +16,8 @@
 \alias{search_works}
 \title{Search musicbrainz database}
 \usage{
-search_annotations(query, limit = NULL, offset = NULL, strict = FALSE)
+search_annotations(query, limit = NULL, offset = NULL,
+  strict = FALSE)
 
 search_areas(query, limit = NULL, offset = NULL, strict = FALSE)
 
@@ -24,7 +25,8 @@ search_artists(query, limit = NULL, offset = NULL, strict = FALSE)
 
 search_events(query, limit = NULL, offset = NULL, strict = FALSE)
 
-search_instruments(query, limit = NULL, offset = NULL, strict = FALSE)
+search_instruments(query, limit = NULL, offset = NULL,
+  strict = FALSE)
 
 search_labels(query, limit = NULL, offset = NULL, strict = FALSE)
 
@@ -32,7 +34,8 @@ search_places(query, limit = NULL, offset = NULL, strict = FALSE)
 
 search_recordings(query, limit = NULL, offset = NULL, strict = FALSE)
 
-search_release_groups(query, limit = NULL, offset = NULL, strict = FALSE)
+search_release_groups(query, limit = NULL, offset = NULL,
+  strict = FALSE)
 
 search_releases(query, limit = NULL, offset = NULL, strict = FALSE)
 
