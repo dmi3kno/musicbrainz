@@ -35,7 +35,7 @@ get_main_parser_lst <-function(type){
                       place_begin = list("life-span","begin"), place_end = list("life-span","end"), place_ended = list("life-span","ended")),
     "recordings", list(mbid = "id", score = "score", title = "title", length = "length", video = "video"),
     "releases",   list(mbid = "id", score = "score", count = "count", title = "title",
-                       status = "status", status_id = "status-id", packaging = "packaging", packaging_id = "packaging-id",
+                       status = "status", status_id = "status-id", packaging_id = list("packaging", "id"), packaging_name = list("packaging", "name"),
                        date = "date", country = "country", disambiguation="disambiguation",
                        barcode = "barcode", asin = "asin", track_count = "track-count", quality="quality",
                        release_group_id = list("release-group", "id"),
@@ -128,11 +128,10 @@ get_includes_parser_df <- function(res, includes) {
 
 #' @importFrom purrr map map_dfr pluck
 #' @importFrom tibble tibble
-#' @importFrom rlang UQ
 parse_includes <- function(nm, lst_xtr, lst) {
   nm <- quo_name(nm)
   res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, !!!i, .default = NA))))
-  tibble::tibble(rlang::UQ(nm) := res_lst)
+  tibble::tibble(!!nm := res_lst)
 }
 
 
