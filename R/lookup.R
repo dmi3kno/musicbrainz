@@ -29,7 +29,7 @@ NULL
 #' @export
 lookup_area_by_id <- function(mbid, includes=NULL) {
   available_includes <- c("tags")
-  includes <- validate_includes (includes, available_includes)
+  includes <- validate_includes(includes, available_includes)
   res <- lookup_by_id("area", mbid, includes)
 
   parsers_df <- get_includes_parser_df(res, includes)
