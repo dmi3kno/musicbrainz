@@ -142,7 +142,7 @@ browse_recordings_by <- function(entity, mbid, includes=NULL, limit=NULL, offset
 
 #' Browse releases by related id
 #'
-#' @param entity area, artist, label, recording, release-group
+#' @param entity area, artist, collection, label, recording, release-group
 #'
 #' @param mbid id of an object, specified by entity
 #' @param includes artists, labels, recordings, release-groups,  media, recordings
@@ -156,8 +156,8 @@ browse_recordings_by <- function(entity, mbid, includes=NULL, limit=NULL, offset
 #' browse_releases_by("artist", "0103c1cc-4a09-4a5d-a344-56ad99a77193")
 #' @export
 browse_releases_by <- function(entity, mbid, includes=NULL, limit=NULL, offset=NULL) {
-  allowed_entities <- c("area", "artist", "label", "recording", "release-group") #"track", "track_artist"
   available_includes <- c("artists", "labels", "recordings", "release-groups", "media", "recordings") #"discids", "isrcs",
+  allowed_entities <- c("area", "artist", "collection", "label", "recording", "release-group") #"track", "track_artist"
   mb_browse(context="release", entity, mbid, includes, limit, offset,
             allowed_entities, available_includes)
 }

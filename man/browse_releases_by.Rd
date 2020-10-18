@@ -8,7 +8,7 @@ browse_releases_by(entity, mbid, includes = NULL, limit = NULL,
   offset = NULL)
 }
 \arguments{
-\item{entity}{area, artist, label, recording, release-group}
+\item{entity}{area, artist, collection, label, recording, release-group}
 
 \item{mbid}{id of an object, specified by entity}
 
