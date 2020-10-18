@@ -35,10 +35,9 @@ lookup_area_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("areas"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("areas"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
   res_df
 }
 
@@ -55,10 +54,9 @@ lookup_artist_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("artists"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("artists"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
   res_df
 }
 
@@ -75,10 +73,9 @@ lookup_event_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("events"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("events"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
 
   res_df
 }
@@ -96,10 +93,9 @@ lookup_instrument_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("instruments"),function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("instruments"),function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
 
   res_df
 }
@@ -117,10 +113,9 @@ lookup_label_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("labels"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("labels"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
   res_df
 }
 
@@ -137,10 +132,9 @@ lookup_place_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("places"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("places"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+      res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
 
   res_df
 }
@@ -158,10 +152,9 @@ lookup_recording_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("recordings"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("recordings"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+      res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
   res_df
 }
 
@@ -178,10 +171,10 @@ lookup_release_group_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("release-groups"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <-  purrr::map_dfr(get_main_parser_lst("release-groups"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
+
   res_df
 }
 
@@ -198,10 +191,9 @@ lookup_release_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("releases"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("releases"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
   res_df
 }
 
@@ -218,10 +210,9 @@ lookup_series_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("series"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("series"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
 
   res_df
 }
@@ -239,10 +230,9 @@ lookup_work_by_id <- function(mbid, includes=NULL) {
   parsers_df <- get_includes_parser_df(res, includes)
 
   # extract and bind
-  res_df <- dplyr::bind_cols(
-    purrr::map_dfr(get_main_parser_lst("works"), function(i) purrr::pluck(res, !!!i, .default = NA_character_)),
-    purrr::pmap_dfc(parsers_df, parse_includes)
-  )
+  res_df <- purrr::map_dfr(get_main_parser_lst("works"), function(i) purrr::pluck(res, !!!i, .default = NA_character_))
+  if(nrow(parsers_df)>0)
+    res_df <- dplyr::bind_cols(res_df,  purrr::pmap_dfc(parsers_df, parse_includes))
 
   res_df
 }

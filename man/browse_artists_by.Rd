@@ -4,8 +4,7 @@
 \alias{browse_artists_by}
 \title{Browse artists by related id}
 \usage{
-browse_artists_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_artists_by(entity, mbid, includes = NULL, limit = NULL, offset = NULL)
 }
 \arguments{
 \item{entity}{area, recording, release, release-group or work}

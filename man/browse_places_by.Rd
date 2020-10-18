@@ -4,8 +4,7 @@
 \alias{browse_places_by}
 \title{Browse places by related id}
 \usage{
-browse_places_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_places_by(entity, mbid, includes = NULL, limit = NULL, offset = NULL)
 }
 \arguments{
 \item{entity}{area}

@@ -4,8 +4,7 @@
 \alias{browse_works_by}
 \title{Browse works by related id}
 \usage{
-browse_works_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_works_by(entity, mbid, includes = NULL, limit = NULL, offset = NULL)
 }
 \arguments{
 \item{entity}{artist}

@@ -43,12 +43,12 @@ gh_logo <- bunny::github %>%
   image_scale("50x50")
 
 gh <- image_canvas_ghcard("#EEE9EF") %>%
-  image_compose(img_hex_gh, gravity = "East", offset = "+100+0") %>%
-  image_annotate("What's on your mind?", gravity = "West", location = "+0-30",
+  image_compose(img_hex_gh, gravity = "East", offset = "+50+0") %>%
+  image_annotate("What's on your mind?", gravity = "West", location = "+50-30",
                  color="#534B62", size=60, font="Aller", weight = 700) %>%
-  image_compose(gh_logo, gravity="West", offset = "+0+40") %>%
-  image_annotate("dmi3kno/musicbrainz", gravity="West", location="+70+45",
-                 size=54, font="Ubuntu Mono") %>%
+  image_compose(gh_logo, gravity="West", offset = "+50+40") %>%
+  image_annotate("dmi3kno/musicbrainz", gravity="West", location="+120+45",
+                 size=50, font="Ubuntu Mono") %>%
   image_border_ghcard("#EEE9EF")
 
 gh

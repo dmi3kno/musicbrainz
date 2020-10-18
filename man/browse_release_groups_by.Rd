@@ -4,8 +4,13 @@
 \alias{browse_release_groups_by}
 \title{Browse release groups by related id}
 \usage{
-browse_release_groups_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_release_groups_by(
+  entity,
+  mbid,
+  includes = NULL,
+  limit = NULL,
+  offset = NULL
+)
 }
 \arguments{
 \item{entity}{artist, release}

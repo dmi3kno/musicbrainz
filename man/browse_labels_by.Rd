@@ -4,8 +4,7 @@
 \alias{browse_labels_by}
 \title{Browse labels by related id}
 \usage{
-browse_labels_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_labels_by(entity, mbid, includes = NULL, limit = NULL, offset = NULL)
 }
 \arguments{
 \item{entity}{area or release}

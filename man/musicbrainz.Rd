@@ -3,7 +3,6 @@
 \docType{package}
 \name{musicbrainz}
 \alias{musicbrainz}
-\alias{musicbrainz-package}
 \title{musicbrainz}
 \description{
 Utilising the musicbrainz.org API, retrieve metadata about music

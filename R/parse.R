@@ -91,8 +91,8 @@ get_includes_parser_df <- function(res, includes) {
     node=c("releases", "recordings", "release-groups", "works", "artist-credit", "label-info", "media", "tags"),
     lst_xtr = list(
       list(
-        release_mbid = "id", barcode = "barcode", packaging_id = list("packaging", "id"),
-        packaging_name = list("packaging", "name"),
+        release_mbid = "id", barcode = "barcode", packaging_id = "packaging-id",
+        packaging_name = "packaging",
         title = "title", date = "date", status = "status", status_id = "status-id",
         quality = "quality", country = "country", disambiguation = "disambiguation"
       ),

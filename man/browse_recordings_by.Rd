@@ -4,8 +4,13 @@
 \alias{browse_recordings_by}
 \title{Browse recordings by related id}
 \usage{
-browse_recordings_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_recordings_by(
+  entity,
+  mbid,
+  includes = NULL,
+  limit = NULL,
+  offset = NULL
+)
 }
 \arguments{
 \item{entity}{artist, release}

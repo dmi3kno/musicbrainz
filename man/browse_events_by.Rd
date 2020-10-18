@@ -4,8 +4,7 @@
 \alias{browse_events_by}
 \title{Browse events by related id}
 \usage{
-browse_events_by(entity, mbid, includes = NULL, limit = NULL,
-  offset = NULL)
+browse_events_by(entity, mbid, includes = NULL, limit = NULL, offset = NULL)
 }
 \arguments{
 \item{entity}{area, artist or place}

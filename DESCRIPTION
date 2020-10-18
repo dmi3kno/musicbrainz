@@ -26,7 +26,7 @@ Imports:
     tibble,
     ratelimitr,
     memoise
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://github.com/dmi3kno/musicbrainz,
 BugReports: https://github.com/dmi3kno/musicbrainz/issues
