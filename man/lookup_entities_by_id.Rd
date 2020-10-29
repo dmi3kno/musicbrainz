@@ -41,7 +41,7 @@ lookup_work_by_id(mbid, includes = NULL)
 \item{mbid}{musicbrainz database id}
 
 \item{includes}{character vector of names of related entities to include. See information
-about avaialable includes in each of the lookup functions.}
+about available includes in each of the lookup functions.}
 }
 \value{
 Tibble containing details of the requested entity

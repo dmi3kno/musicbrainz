@@ -7,7 +7,7 @@
 #' @return Tibble containing details of the requested entity
 #' @param mbid musicbrainz database id
 #' @param includes character vector of names of related entities to include. See information
-#' about avaialable includes in each of the lookup functions.
+#' about available includes in each of the lookup functions.
 #' @examples
 #' # find mbid for Trondheim and lookup area information
 #' trondheim_mbid <- search_areas("Trondheim",1)$mbid
