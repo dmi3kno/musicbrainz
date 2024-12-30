@@ -57,31 +57,31 @@ Perform free text search in the musicbrainz database. Scope of each of the `sear
 }
 \section{Functions}{
 \itemize{
-\item \code{search_annotations}: Search annotations
+\item \code{search_annotations()}: Search annotations
 
-\item \code{search_areas}: Search areas
+\item \code{search_areas()}: Search areas
 
-\item \code{search_artists}: Search artists
+\item \code{search_artists()}: Search artists
 
-\item \code{search_events}: Search events
+\item \code{search_events()}: Search events
 
-\item \code{search_instruments}: Search instrument
+\item \code{search_instruments()}: Search instrument
 
-\item \code{search_labels}: Search labels
+\item \code{search_labels()}: Search labels
 
-\item \code{search_places}: Search places
+\item \code{search_places()}: Search places
 
-\item \code{search_recordings}: Search recordings
+\item \code{search_recordings()}: Search recordings
 
-\item \code{search_release_groups}: Search release groups (e.g. albums)
+\item \code{search_release_groups()}: Search release groups (e.g. albums)
 
-\item \code{search_releases}: Search releases
+\item \code{search_releases()}: Search releases
 
-\item \code{search_series}: Search series
+\item \code{search_series()}: Search series
 
-\item \code{search_works}: Search works
+\item \code{search_works()}: Search works
+
 }}
-
 \examples{
 search_annotations("concerto")
 

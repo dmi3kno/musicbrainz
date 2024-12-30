@@ -26,5 +26,7 @@ Browse artists by related id
 \examples{
 # browse Norwegian artists
 browse_artists_by("area", "6743d351-6f37-3049-9724-5041161fff4d")
+# browse artists from Oslo
+browse_artists_by("area", "f80d529e-f242-46ef-a090-d193ed23075f")
 
 }

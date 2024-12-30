@@ -1,5 +1,6 @@
 #' @importFrom tibble tribble
 #' @importFrom dplyr filter
+#' @keywords internal
 get_main_parser_lst <-function(type){
   # prepare extractors
   parsers_df <- tibble::tribble(
@@ -68,6 +69,7 @@ get_main_parser_lst <-function(type){
 
 
 #' @importFrom purrr map map_dfr pluck
+#' @keywords internal
 parse_list <- function(type, res_lst, offset, hit_count) {
   if (!is.null(res_lst) && length(res_lst)) {
     message(paste("Returning", type, offset + 1, "to", offset + length(res_lst), "of", hit_count))
@@ -85,6 +87,7 @@ parse_list <- function(type, res_lst, offset, hit_count) {
 #' @importFrom purrr map map_dfr pluck
 #' @importFrom tibble tibble
 #' @importFrom dplyr filter mutate select
+#' @keywords internal
 get_includes_parser_df <- function(res, includes) {
   df <- tibble::tibble(
     nm = c("releases", "recordings", "release-groups", "works", "artists", "labels", "media", "tags"),
@@ -130,12 +133,11 @@ get_includes_parser_df <- function(res, includes) {
 #' @importFrom purrr map map_dfr pluck
 #' @importFrom tibble tibble
 parse_includes <- function(nm, lst_xtr, lst) {
-  nm <- quo_name(nm)
   res_lst <- list(purrr::map_dfr(lst, ~ purrr::map(lst_xtr, function(i) purrr::pluck(.x, !!!i, .default = NA))))
-  tibble::tibble(!!nm := res_lst)
+  tibble::tibble({{nm}} := res_lst)
 }
 
-
+#' @keywords internal
 validate_includes <- function(includes, available_includes){
   unsupported_includes <- base::setdiff(includes, available_includes)
   if(!is.null(unsupported_includes) && length(unsupported_includes)>0){

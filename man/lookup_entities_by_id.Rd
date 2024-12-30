@@ -53,40 +53,40 @@ Lookup functions are not vectorized
 }
 \section{Functions}{
 \itemize{
-\item \code{lookup_area_by_id}: lookup area by mbid.
+\item \code{lookup_area_by_id()}: lookup area by mbid.
 Available includes: tags
 
-\item \code{lookup_artist_by_id}: lookup artist by mbid.
+\item \code{lookup_artist_by_id()}: lookup artist by mbid.
 Available includes: recordings, releases, release-groups, works and tags.
 
-\item \code{lookup_event_by_id}: lookup event by mbid.
+\item \code{lookup_event_by_id()}: lookup event by mbid.
 Available includes: tags.
 
-\item \code{lookup_instrument_by_id}: lookup instrument by mbid.
+\item \code{lookup_instrument_by_id()}: lookup instrument by mbid.
 Available includes: tags.
 
-\item \code{lookup_label_by_id}: lookup label by mbid.
+\item \code{lookup_label_by_id()}: lookup label by mbid.
 Available includes: releases and tags.
 
-\item \code{lookup_place_by_id}: lookup artist by mbid.
+\item \code{lookup_place_by_id()}: lookup artist by mbid.
 Available includes: tags.
 
-\item \code{lookup_recording_by_id}: lookup recording by mbid.
+\item \code{lookup_recording_by_id()}: lookup recording by mbid.
 Available includes: artists, releases and tags
 
-\item \code{lookup_release_group_by_id}: lookup release group by mbid.
+\item \code{lookup_release_group_by_id()}: lookup release group by mbid.
 Available includes: artists, releases and tags
 
-\item \code{lookup_release_by_id}: lookup release by mbid.
+\item \code{lookup_release_by_id()}: lookup release by mbid.
 Available includes: artists, labels, recordings, release-groups, and tags
 
-\item \code{lookup_series_by_id}: lookup series by mbid.
+\item \code{lookup_series_by_id()}: lookup series by mbid.
 Available includes: tags
 
-\item \code{lookup_work_by_id}: lookup work by mbid.
+\item \code{lookup_work_by_id()}: lookup work by mbid.
 Available includes: tags
+
 }}
-
 \examples{
 # find mbid for Trondheim and lookup area information
 trondheim_mbid <- search_areas("Trondheim",1)$mbid

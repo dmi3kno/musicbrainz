@@ -3,7 +3,25 @@
 \docType{package}
 \name{musicbrainz}
 \alias{musicbrainz}
+\alias{musicbrainz-package}
 \title{musicbrainz}
 \description{
 Utilising the musicbrainz.org API, retrieve metadata about music
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dmi3kno/musicbrainz,}
+  \item Report bugs at \url{https://github.com/dmi3kno/musicbrainz/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Dmytro Perepolkin \email{dperepolkin@gmail.com}
+
+Authors:
+\itemize{
+  \item MetaBrainz Foundation (MetaBrainz)
+}
+
 }
